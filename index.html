@@ -1,5 +1,35 @@
-<html>
-  <body>
-    <p>Hello, world!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Korben's Portfolio</title>
+    <script type="text/javascript">
+      let last_blurb = null;
+
+      //Show a technology blurb / project list.
+      function show_blurb(num){
+          if(last_blurb === null){
+              last_blurb = document.getElementById('blurb-default');
+          }
+          const tech_blurb = document.getElementById("tech-blurb");
+          //We use an offset as the first blurb is always the default.
+          let next_blurb = tech_blurb.children[++num];
+          //If there is no blurb for this technology, exit out.
+          if(next_blurb === null){
+              return;
+          }
+          //Otherwise, swap the visibility so we can see what's going on.
+          last_blurb.hidden = true;
+          last_blurb = next_blurb;
+          last_blurb.hidden = false;
+      }
+    </script>
+
+  </head>
+  <body role="main">
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
